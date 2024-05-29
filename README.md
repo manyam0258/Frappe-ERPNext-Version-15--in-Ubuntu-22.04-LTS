@@ -86,13 +86,11 @@ A complete Guide to Install Frappe/ERPNext version 15  in Ubuntu 22.04 LTS
             Suites: jammy
             Components: main main/debug
             Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
-
+---
        sudo apt-get update
        sudo apt-get install mariadb-server
-
-
        sudo mysql_secure_installation
-    
+--  
     
       In order to log into MariaDB to secure it, we'll need the current
       password for the root user. If you've just installed MariaDB, and
