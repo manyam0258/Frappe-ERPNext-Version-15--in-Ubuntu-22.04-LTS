@@ -70,9 +70,28 @@ A complete Guide to Install Frappe/ERPNext version 15  in Ubuntu 22.04 LTS
 
 - [maridab-server](https://mariadb.org/download/?t=repo-config&d=22.04+%22jammy%22&v=10.6&r_m=bharat)
 
-    sudo apt-get install software-properties-common
-    sudo apt install mariadb-server
-    sudo mysql_secure_installation
+-     sudo apt-get install apt-transport-https curl
+      sudo mkdir -p /etc/apt/keyrings
+      sudo curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp'
+
+- Once the key is imported, copy and paste the following into a file under /etc/apt/sources.list.d (for instance /etc/apt/sources.list.d/mariadb.sources):
+
+            # MariaDB 10.6 repository list - created 2024-05-29 10:37 UTC
+            # https://mariadb.org/download/
+            X-Repolib-Name: MariaDB
+            Types: deb
+            # deb.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.
+            # URIs: https://deb.mariadb.org/10.6/ubuntu
+            URIs: https://mirror.bharatdatacenter.com/mariadb/repo/10.6/ubuntu
+            Suites: jammy
+            Components: main main/debug
+            Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
+
+       sudo apt-get update
+       sudo apt-get install mariadb-server
+
+
+       sudo mysql_secure_installation
     
     
       In order to log into MariaDB to secure it, we'll need the current
